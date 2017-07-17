@@ -74,12 +74,12 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 ##################################################
-#Create Insatnces
+#Create Instances
 ##################################################
 
 resource "aws_instance" "db_az_1" {
 
-  count = "${length(var.db_az_1)}"
+  count = "${length(var.db_az1_ip)}"
 
   ami  = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
@@ -97,11 +97,11 @@ resource "aws_instance" "db_az_1" {
   }
 }
 #################################################
-#Create Insatnces
+#Create Instances
 ##################################################
 resource "aws_instance" "db_az_2" {
 
-  count = "${length(var.db_az_2)}"
+  count = "${length(var.db_az2_ip)}"
 
   ami  = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"

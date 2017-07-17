@@ -127,12 +127,12 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 ##################################################
-#Create Insatnces
+#Create Instances
 ##################################################
 
 resource "aws_instance" "bl_az_1" {
 
-  count = "${length(var.bl_az_1)}"
+  count = "${length(var.bl_az1_ip)}"
 
   ami  = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
@@ -155,11 +155,11 @@ resource "aws_elb_attachment" "elb_bl_az_1" {
   instance = "${element(aws_instance.bl_az_1.*.id, count.index)}"
 }
 #################################################
-#Create Insatnces
+#Create Instances
 ##################################################
 resource "aws_instance" "bl_az_2" {
 
-  count = "${length(var.bl_az_2)}"
+  count = "${length(var.bl_az2_ip)}"
 
   ami  = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"

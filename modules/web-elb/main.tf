@@ -131,18 +131,19 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 ##################################################
-#Create Insatnces
+#Create Instances
 ##################################################
 
 resource "aws_instance" "web_web_az_1" {
 
   #multiply to 'var.is_sn_*_present=false will result '0' and resource will not work
   #count = "${length(var.web_az1_ip) * var.is_web_az_1_present}"
-  count = "${length(var.web_az_1)}"
+  count = "${length(var.web_az1_ip)}"
 
   ami  = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
   availability_zone = "${var.region}${var.web_az_1}"
+  #availability_zone = "${aws_instance.web_web_az_1.*.availability_zone}"
   subnet_id = "${aws_subnet.web.0.id}"
   private_ip = "${element(var.web_az1_ip, count.index)}"
   vpc_security_group_ids = ["${aws_security_group.web-sg.id}"]
@@ -167,13 +168,13 @@ resource "aws_elb_attachment" "elb_web_az_1" {
   instance = "${element(aws_instance.web_web_az_1.*.id, count.index)}"
 }
 #################################################
-#Create Insatnces
+#Create Instances
 ##################################################
 resource "aws_instance" "web_web_az_2" {
 
   #multiply to 'var.is_sn_*_present=false will result '0' and resource will not work
   #count = "${length(var.web_az1_ip) * var.is_web_az_1_present}"
-  count = "${length(var.web_az_2)}"
+  count = "${length(var.web_az2_ip)}"
 
   ami  = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"

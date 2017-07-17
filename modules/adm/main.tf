@@ -52,7 +52,7 @@ resource "aws_security_group" "adm-sg" {
     cidr_blocks = "${var.db_sn_list}"
   }
 
-  # ALL trafficfrom WEB
+  # ALL traffic from WEB
   ingress {
     from_port   = 0
     to_port     = 0
@@ -82,12 +82,12 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 ##################################################
-#Create Insatnces
+#Create Instances
 ##################################################
 
 resource "aws_instance" "adm_az_1" {
 
-  count = "${length(var.adm_az_1)}"
+  count = "${length(var.adm_az1_ip)}"
 
   ami  = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"

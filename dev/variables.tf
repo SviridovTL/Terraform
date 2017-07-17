@@ -26,7 +26,7 @@ variable "adm_az1_ip" { default = ["10.10.40.11"] }
 variable "bl_sn_list" { default = ["10.10.30.0/24", "10.10.31.0/24"] }
 
 variable "bl_az_1" { default = "a" }
-variable "bl_az1_ip" { default = ["10.10.30.11"] }
+variable "bl_az1_ip" { default = ["10.10.30.11","10.10.30.12"] }
 variable "bl_az_2" { default = "b" }
 variable "bl_az2_ip" { default = ["10.10.31.11"] }
 ##################################################
@@ -35,15 +35,15 @@ variable "bl_az2_ip" { default = ["10.10.31.11"] }
 variable "db_sn_list" { default = ["10.10.20.0/24","10.10.21.0/24"] }
 
 variable "db_az_1" { default = "a" }
-variable "db_az1_ip" { default = ["10.10.20.11"] }
+variable "db_az1_ip" { default = ["10.10.20.11","10.10.20.12"] }
 variable "db_az_2" { default = "b" }
 variable "db_az2_ip" { default = ["10.10.21.11","10.10.21.12"] }
 ##################################################
 # DOM input Data
 ##################################################
-variable "dom_sn_list" { default = ["10.10.100.0/24", "10.10.101.0/24"] }
+variable "dom_sn_list" { default = ["10.10.100.0/24"] }
 
 variable "dom_az_1" { default = "a" }
 variable "dom_az1_ip" { default = ["10.10.100.11"] }
-variable "dom_az_2" { default = "b" }
-variable "dom_az2_ip" { default = ["10.10.101.11"] }
+variable "dom_az_2" { default = "" }
+variable "dom_az2_ip" { default = [] }

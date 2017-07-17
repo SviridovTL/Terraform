@@ -134,14 +134,14 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 ##################################################
-#Create Insatnces
+#Create Instances
 ##################################################
 
 resource "aws_instance" "web_web_az_1" {
 
   #multiply to 'var.is_sn_*_present=false will result '0' and resource will not work
   #count = "${length(var.web_az1_ip) * var.is_web_az_1_present}"
-  count = "${length(var.web_az_1)}"
+  count = "${length(var.web_az1_ip)}"
 
   ami  = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
@@ -162,13 +162,13 @@ resource "aws_eip" "eip_web_az_1" {
    instance = "${element(aws_instance.web_web_az_1.*.id, count.index)}"
 }
 #################################################
-#Create Insatnces
+#Create Instances
 ##################################################
 resource "aws_instance" "web_web_az_2" {
 
   #multiply to 'var.is_sn_*_present=false will result '0' and resource will not work
   #count = "${length(var.web_az1_ip) * var.is_web_az_1_present}"
-  count = "${length(var.web_az_2)}"
+  count = "${length(var.web_az2_ip)}"
 
   ami  = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
