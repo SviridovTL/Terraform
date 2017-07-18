@@ -5,7 +5,7 @@ variable "availability_zone" { default = ["a","b"]}
 variable "env" { default = "dev" }
 variable "system" { default = "bn" }
 
-variable "is_multi_az" { default = true }
+variable "is_multi_az" { default = "true" }
 ##################################################
 # WEB input Data
 ##################################################

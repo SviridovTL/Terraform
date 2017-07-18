@@ -173,3 +173,11 @@ resource "aws_elb" "web_elb" {
     Name = "${var.env}-${var.system}-web-elb"
   }
 }
+##################################################
+#Assign EIP to instances
+##################################################
+# resource "aws_eip" "eip_web_az_1" {
+#
+#    count = "${length(var.web_az1_ip)}"
+#    instance = "${element(aws_instance.web_web_az_1.*.id, count.index)}"
+# }
