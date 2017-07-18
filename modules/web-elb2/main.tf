@@ -147,6 +147,7 @@ resource "aws_instance" "web_az_2" {
 #Create Elastic Load Balancer
 ##################################################
 resource "aws_elb" "web_elb" {
+  count = "${length(var.is_multi_az)}"
   name = "web-elb"
   cross_zone_load_balancing = true
   internal = false
@@ -166,7 +167,7 @@ resource "aws_elb" "web_elb" {
     interval            = 30
   }
 
-  instances = ["${ split(",",var.is_multi_az == 1 ? join(",", concat(aws_instance.web_az_1.*.id, aws_instance.web_az_2.*.id)) : join(",", aws_instance.web_az_2.*.id))}"]
+  instances = ["${ split(",",var.is_multi_az == 1 ? join(",", concat(aws_instance.web_az_1.*.id, aws_instance.web_az_2.*.id)) : join(",", aws_instance.web_az_1.*.id))}"]
 
   tags {
     Name = "${var.env}-${var.system}-web-elb"
