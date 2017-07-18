@@ -1,111 +1,111 @@
 provider "aws" {
-  access_key = "AKIAIYND6TVWUEF5H3XQ"
-  secret_key = "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"
+  access_key = "AKIAJLC7S2X37PENFYOQ"
+  secret_key = "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"
   region     = "${var.region}"
 }
 
 
-module "web_layer_elb" {
-  source = "../modules/web-elb"
-  vpc_id = "${var.vpc_id}"
-  region = "${var.region}"
-  availability_zone = "${var.availability_zone}"
-
-  env = "${var.env}"
-  system = "${var.system}"
-
-  web_sn_list = "${var.web_sn_list}"
-  adm_sn_list = "${var.adm_sn_list}"
-  bl_sn_list = "${var.bl_sn_list}"
-  dom_sn_list = "${var.dom_sn_list}"
-
-  web_az_1 = "${var.web_az_1}"
-  web_az1_ip = "${var.web_az1_ip}"
-  web_az_2 = "${var.web_az_2}"
-  web_az2_ip = "${var.web_az2_ip}"
-}
-
-module "bl_layer" {
-  source = "../modules/bl"
-  vpc_id = "${var.vpc_id}"
-  region = "${var.region}"
-  availability_zone = "${var.availability_zone}"
-
-  env = "${var.env}"
-  system = "${var.system}"
-
-  web_sn_list = "${var.web_sn_list}"
-  adm_sn_list = "${var.adm_sn_list}"
-  bl_sn_list = "${var.bl_sn_list}"
-  dom_sn_list = "${var.dom_sn_list}"
-  db_sn_list = "${var.db_sn_list}"
-
-  bl_az_1 = "${var.bl_az_1}"
-  bl_az1_ip = "${var.bl_az1_ip}"
-  bl_az_2 = "${var.bl_az_2}"
-  bl_az2_ip = "${var.bl_az2_ip}"
-}
-
-module "db_layer" {
-  source = "../modules/db"
-  vpc_id = "${var.vpc_id}"
-  region = "${var.region}"
-  availability_zone = "${var.availability_zone}"
-
-  env = "${var.env}"
-  system = "${var.system}"
-
-  web_sn_list = "${var.web_sn_list}"
-  adm_sn_list = "${var.adm_sn_list}"
-  bl_sn_list = "${var.bl_sn_list}"
-  dom_sn_list = "${var.dom_sn_list}"
-  db_sn_list = "${var.db_sn_list}"
-
-  db_az_1 = "${var.db_az_1}"
-  db_az1_ip = "${var.db_az1_ip}"
-  db_az_2 = "${var.db_az_2}"
-  db_az2_ip = "${var.db_az2_ip}"
-}
-
-module "dom_layer" {
-  source = "../modules/dom"
-  vpc_id = "${var.vpc_id}"
-  region = "${var.region}"
-  availability_zone = "${var.availability_zone}"
-
-  env = "${var.env}"
-  system = "${var.system}"
-
-  web_sn_list = "${var.web_sn_list}"
-  adm_sn_list = "${var.adm_sn_list}"
-  bl_sn_list = "${var.bl_sn_list}"
-  dom_sn_list = "${var.dom_sn_list}"
-  db_sn_list = "${var.db_sn_list}"
-
-  dom_az_1 = "${var.dom_az_1}"
-  dom_az1_ip = "${var.dom_az1_ip}"
-  dom_az_2 = "${var.dom_az_2}"
-  dom_az2_ip = "${var.dom_az2_ip}"
-}
-
-module "adm_layer" {
-  source = "../modules/adm"
-  vpc_id = "${var.vpc_id}"
-  region = "${var.region}"
-  availability_zone = "${var.availability_zone}"
-
-  env = "${var.env}"
-  system = "${var.system}"
-
-  web_sn_list = "${var.web_sn_list}"
-  adm_sn_list = "${var.adm_sn_list}"
-  bl_sn_list = "${var.bl_sn_list}"
-  dom_sn_list = "${var.dom_sn_list}"
-  db_sn_list = "${var.db_sn_list}"
-
-  adm_az_1 = "${var.adm_az_1}"
-  adm_az1_ip = "${var.adm_az1_ip}"
-}
+# module "web_layer_elb" {
+#   source = "../modules/web-elb"
+#   vpc_id = "${var.vpc_id}"
+#   region = "${var.region}"
+#   availability_zone = "${var.availability_zone}"
+#
+#   env = "${var.env}"
+#   system = "${var.system}"
+#
+#   web_sn_list = "${var.web_sn_list}"
+#   adm_sn_list = "${var.adm_sn_list}"
+#   bl_sn_list = "${var.bl_sn_list}"
+#   dom_sn_list = "${var.dom_sn_list}"
+#
+#   web_az_1 = "${var.web_az_1}"
+#   web_az1_ip = "${var.web_az1_ip}"
+#   web_az_2 = "${var.web_az_2}"
+#   web_az2_ip = "${var.web_az2_ip}"
+# }
+#
+# module "bl_layer" {
+#   source = "../modules/bl"
+#   vpc_id = "${var.vpc_id}"
+#   region = "${var.region}"
+#   availability_zone = "${var.availability_zone}"
+#
+#   env = "${var.env}"
+#   system = "${var.system}"
+#
+#   web_sn_list = "${var.web_sn_list}"
+#   adm_sn_list = "${var.adm_sn_list}"
+#   bl_sn_list = "${var.bl_sn_list}"
+#   dom_sn_list = "${var.dom_sn_list}"
+#   db_sn_list = "${var.db_sn_list}"
+#
+#   bl_az_1 = "${var.bl_az_1}"
+#   bl_az1_ip = "${var.bl_az1_ip}"
+#   bl_az_2 = "${var.bl_az_2}"
+#   bl_az2_ip = "${var.bl_az2_ip}"
+# }
+#
+# module "db_layer" {
+#   source = "../modules/db"
+#   vpc_id = "${var.vpc_id}"
+#   region = "${var.region}"
+#   availability_zone = "${var.availability_zone}"
+#
+#   env = "${var.env}"
+#   system = "${var.system}"
+#
+#   web_sn_list = "${var.web_sn_list}"
+#   adm_sn_list = "${var.adm_sn_list}"
+#   bl_sn_list = "${var.bl_sn_list}"
+#   dom_sn_list = "${var.dom_sn_list}"
+#   db_sn_list = "${var.db_sn_list}"
+#
+#   db_az_1 = "${var.db_az_1}"
+#   db_az1_ip = "${var.db_az1_ip}"
+#   db_az_2 = "${var.db_az_2}"
+#   db_az2_ip = "${var.db_az2_ip}"
+# }
+#
+# module "dom_layer" {
+#   source = "../modules/dom"
+#   vpc_id = "${var.vpc_id}"
+#   region = "${var.region}"
+#   availability_zone = "${var.availability_zone}"
+#
+#   env = "${var.env}"
+#   system = "${var.system}"
+#
+#   web_sn_list = "${var.web_sn_list}"
+#   adm_sn_list = "${var.adm_sn_list}"
+#   bl_sn_list = "${var.bl_sn_list}"
+#   dom_sn_list = "${var.dom_sn_list}"
+#   db_sn_list = "${var.db_sn_list}"
+#
+#   dom_az_1 = "${var.dom_az_1}"
+#   dom_az1_ip = "${var.dom_az1_ip}"
+#   dom_az_2 = "${var.dom_az_2}"
+#   dom_az2_ip = "${var.dom_az2_ip}"
+# }
+#
+# module "adm_layer" {
+#   source = "../modules/adm"
+#   vpc_id = "${var.vpc_id}"
+#   region = "${var.region}"
+#   availability_zone = "${var.availability_zone}"
+#
+#   env = "${var.env}"
+#   system = "${var.system}"
+#
+#   web_sn_list = "${var.web_sn_list}"
+#   adm_sn_list = "${var.adm_sn_list}"
+#   bl_sn_list = "${var.bl_sn_list}"
+#   dom_sn_list = "${var.dom_sn_list}"
+#   db_sn_list = "${var.db_sn_list}"
+#
+#   adm_az_1 = "${var.adm_az_1}"
+#   adm_az1_ip = "${var.adm_az1_ip}"
+# }
 
 # module "web_layer_alb" {
 #   source = "../modules/web-alb"
@@ -145,3 +145,26 @@ module "adm_layer" {
 #   web_az1_ip = "${var.web_az1_ip}"
 #   web_az2_ip = "${var.web_az2_ip}"
 # }
+
+module "web_layer_elb2" {
+  source = "../modules/web-elb2"
+  vpc_id = "${var.vpc_id}"
+  region = "${var.region}"
+  availability_zone = "${var.availability_zone}"
+  is_multi_az = "${var.is_multi_az}"
+
+  env = "${var.env}"
+  system = "${var.system}"
+
+  web_sn_list = "${var.web_sn_list}"
+  adm_sn_list = "${var.adm_sn_list}"
+  bl_sn_list = "${var.bl_sn_list}"
+  dom_sn_list = "${var.dom_sn_list}"
+
+  web_az_1 = "${var.web_az_1}"
+  web_sn_1 = "${var.web_sn_1}"
+  web_az1_ip = "${var.web_az1_ip}"
+  web_az_2 = "${var.web_az_2}"
+  web_sn_2 = "${var.web_sn_2}"
+  web_az2_ip = "${var.web_az2_ip}"
+}
